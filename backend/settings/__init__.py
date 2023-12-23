@@ -31,9 +31,9 @@ MEDIA_ROOT: Path = BASE_DIR / 'media'  # noqa: F405
 
 SERVER_URL: str = os.environ.get('SERVER_URL', 'http://localhost:8000')  # noqa: F405
 
-STATICFILES_DIRS: tuple = (
-    BASE_DIR / 'admin/static',
-)
+# STATICFILES_DIRS: tuple = (
+#     BASE_DIR / 'admin/static',
+# )
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
