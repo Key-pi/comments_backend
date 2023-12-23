@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-24 00:36+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: admin/__init__.py:12
+msgid "Comments API"
+msgstr "API комментариев"
+
+#: admin/__init__.py:13
+msgid "Control panel"
+msgstr "Панель управления"
+
+#: api/serializers/comments.py:32
+msgid "This field is required for anonymous users."
+msgstr "Это поле обязательно для анонимных пользователей."
+
+#: api/views/auth.py:68
+msgid "Invalid credentials"
+msgstr "Неверные учетные данные"
+
+#: apps/comments/apps.py:7
+msgid "Comments"
+msgstr "Комментарии"
+
+#: apps/comments/models.py:15
+msgid "Home Page"
+msgstr "Домашняя страница"
+
+#: apps/comments/models.py:16
+msgid "Comment text"
+msgstr "Текст комментария"
+
+#: apps/comments/models.py:17
+msgid "Created at"
+msgstr "Создан в"
+
+#: apps/comments/tasks.py:11
+msgid "Anonymous user"
+msgstr "Анонимный пользователь"
+
+#: apps/comments/tasks.py:12
+msgid "Response to comment"
+msgstr "Ответ на комментарий"
+
+#: apps/comments/tasks.py:13
+#, python-brace-format
+msgid ""
+"You have received a reply to a comment: {comment.parent_comment.text}\n"
+"\n"
+msgstr "Вы получили ответ на комментарий: {comment.parent_comment.text}"
+
+#: apps/user/apps.py:7 apps/user/models.py:21
+msgid "User"
+msgstr "Пользователь"
+
+#: apps/user/models.py:14
+msgid "Email"
+msgstr "Электронная почта"
+
+#: apps/user/models.py:15
+msgid "Language"
+msgstr "Язык"
+
+#: apps/user/models.py:17
+msgid "Avatar image"
+msgstr "Изображение аватара"
+
+#: apps/user/models.py:18
+msgid "Avatar"
+msgstr "Аватар"
+
+#: apps/user/models.py:22
+msgid "Users"
+msgstr "Пользователи"
+
+#: settings/__init__.py:123
+msgid "Russian"
+msgstr "Русский"
+
+#: settings/__init__.py:124
+msgid "English"
+msgstr "Английский"

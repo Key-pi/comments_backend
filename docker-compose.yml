@@ -1,0 +1,79 @@
+version: "3.3"
+services:
+  db:
+    build:
+      context: .
+      dockerfile: docker/postgres/Dockerfile
+    image: comments_db:latest
+    restart: always
+    env_file: .env
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    ports:
+      - "5440:5432"
+
+  redis :
+    image: redis:alpine
+    restart: always
+    expose:
+      - 6379
+    healthcheck:
+      test: [ "CMD", "redis-cli", "-h", "localhost", "ping" ]
+      interval: 1m
+      timeout: 5s
+      retries: 2
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/python/Dockerfile
+    image: comments_backend:latest
+    restart: always
+    env_file: .env
+    stdin_open: true
+    tty: true
+    expose:
+      - 8000
+    ports:
+      - "8001:8000"
+    volumes:
+      - ./backend:/backend
+    depends_on:
+      - db
+      - redis
+      - celery
+#      - nginx
+    working_dir: /backend
+    command: python server/runserver.py
+
+  celery:
+    image: comments_backend
+    restart: on-failure
+    env_file: .env
+    healthcheck:
+      test: [ "CMD-SHELL", "ps ax", "|" ,"grep -v grep", "|" ,"grep celery",  "||", "exit 1" ]
+      interval: 1m
+      timeout: 5s
+      retries: 2
+    volumes:
+      - ./backend:/backend
+    depends_on:
+      - db
+      - redis
+    command: celery --app celery_conf:celery_app worker -l info
+
+  celery_beat:
+    image: comments_backend
+    restart: on-failure
+    env_file: .env
+    healthcheck:
+      test: [ "CMD-SHELL", "ps ax", "|" ,"grep -v grep", "|" ,"grep celery",  "||", "exit 1" ]
+      interval: 1m
+      timeout: 5s
+      retries: 2
+    volumes:
+      - ./backend:/backend
+    depends_on:
+      - db
+      - redis
+    command: celery --app celery_conf:celery_app beat -l info
