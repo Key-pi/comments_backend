@@ -43,6 +43,7 @@
     python manage.py collectstatic
     python manage.py createsuperuser
     ```
+7. Переходите по ссылке: http://0.0.0.0:8001/api/docs/#/
 
 ## Функционал
 
@@ -52,6 +53,7 @@
 4. JWT
 5. Localization (admin panel too)
 6. Pagination
+7. Swagger
 
 Комментарии могут создавать как авторизованные, так и неавторизованные пользователи. Для авторизованного пользователя поле "email" заполнять не обязательно.
 
